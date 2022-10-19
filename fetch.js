@@ -18,7 +18,8 @@ const pokedexLimit = 3
 
 async function fetchPokemon(index) {
   const response = await axios(url+`${index}`)
-  console.log(index)
+  const pokemon = response.data
+  console.log(pokemon.name, pokemon.id, pokemon.habitat.name, pokemon.evolves_from_species, pokemon.is_legendary, pokemon.is_mythical)
   pokeBalls[index-1] = response.data
 }
 
@@ -26,8 +27,8 @@ async function catchPokemon(pokedexLimit) {
   for(let i = 0; i < pokedexLimit; i++){
     await fetchPokemon(i+1)
   }
-  await fsPromises.writeFile("./db/pokemon151.json", JSON.stringify(pokeBalls))
+  // await fsPromises.writeFile("./db/pokemon151.json", JSON.stringify(pokeBalls))
 }
 
-catchPokemon(151)
+catchPokemon(3)
 
