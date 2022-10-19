@@ -6,7 +6,7 @@ import Pokemon from '../models/Pokemon.js'
 const pokemonData = data.map(item => {
   const pokemon = {}
   pokemon.name = item.name
-  pokemon.id = item.id
+  pokemon.pokedexNumber = item.id
   pokemon.habitat = item.habitat.name
   // if (item.evolves_from_species === null) {
   //   pokemon.evolves_from = "birth"
