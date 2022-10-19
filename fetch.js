@@ -16,19 +16,6 @@ let pokeBalls = []
 // Determines how many Pokemon should be sourced
 const pokedexLimit = 3 
 
-// const fetchPokemon = (url,index) => {
-//   for (let i = 0; i < index; i++){
-//     fetch(url+`${index+1}`)
-//       .then(res => res.json())
-//       .then(jsonRes => {
-//         pokemons[i] = jsonRes 
-//       })
-//   }
-// }
-
-// fetchPokemon(url, 2)
-// console.log(pokemons)
-
 async function fetchPokemon(index) {
   const response = await axios(url+`${index}`)
   console.log(index)
@@ -39,7 +26,7 @@ async function catchPokemon(pokedexLimit) {
   for(let i = 0; i < pokedexLimit; i++){
     await fetchPokemon(i+1)
   }
-  await JSON.stringify(pokeBalls)
+  await fsPromises.writeFile("./db/pokemon151.json", JSON.stringify(pokeBalls))
   console.log(pokeBalls)
 }
 
