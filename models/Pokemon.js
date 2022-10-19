@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const pokemonSchema  = new mongoose.Schema({
   name: String,
-  id: Number,
+  pokedexNumber: Number,
   habitat: String,
   // evolves_from: String,
   is_legendary: Boolean, 

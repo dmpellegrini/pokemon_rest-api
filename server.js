@@ -12,6 +12,12 @@ app.get("/", (req,res) => {
   res.send(' Thing!')
 })
 
+// Create 
+app.post('/pokemon', (req, res) => {
+  Pokemon.create(req.body)
+    .then(pokemon => res.json(pokemon))
+})
+
 // Read
 app.get('/pokemon', (req,res) => {
   Pokemon.find({})
@@ -26,14 +32,16 @@ app.get('/pokemon/name/:name', (req,res) => {
 
 // Read
 app.get('/pokemon/pokedexNumber/:number', (req,res) => {
-  Pokemon.find({id: req.params.number})
+  Pokemon.find({pokedexNumber: req.params.number})
     .then(pokemon => res.json(pokemon))
 })
 
-// Create 
-app.post('/pokemon', (req, res) => {
-  Pokemon.create(req.body)
-    .then(pokemon => res.json(pokemon))
+// Update
+app.put('/pokemon/pokedexNumber/:number', (req,res) => {
+  Pokemon.findOneAndUpdate(
+    { pokedexNumber: req.params.number },req.body, {new: true})
+    .then(pokemon => { res.json(pokemon)
+  })
 })
 
 // Delete
