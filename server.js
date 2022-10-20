@@ -3,49 +3,27 @@ import express from 'express'
 const app = express()
 import connection from './db/connection.js'
 import Pokemon from './models/Pokemon.js'
+// import evolveRoute from './routes/evolve.js'
+import habitatRoute from './routes/habitat.js'
+import legendaryRoute from './routes/legendary.js'
+import mythicalRoute from './routes/mythical.js'
+import nameRoute from './routes/name.js'
+import pokedexRoute from './routes/pokedex.js'
+import pokemonRoute from './routes/pokemon.js'
 
 app.use(parser.json())
+// app.use('/evolvution', evolveRoute)
+app.use('/habitat', habitatRoute)
+app.use('/pokemon/legendary', legendaryRoute)
+app.use('/pokemon/mythical', mythicalRoute)
+app.use('/pokemon/name', nameRoute)
+app.use('/pokedex', pokedexRoute)
+app.use('/pokemon', pokemonRoute)
 
 app.listen(3000, () => console.log('app listening on port 3000'))
 
+// Shows A Welcome Message and Directions To User
 app.get("/", (req,res) => {
-  res.send(' Thing!')
+  res.send('Welcome To The Abbreviated Pokemon Rest API!')
 })
 
-// Create 
-app.post('/pokemon', (req, res) => {
-  Pokemon.create(req.body)
-    .then(pokemon => res.json(pokemon))
-})
-
-// Read
-app.get('/pokemon', (req,res) => {
-  Pokemon.find({})
-    .then(pokemons => res.json(pokemons))
-})
-
-// Read
-app.get('/pokemon/name/:name', (req,res) => {
-  Pokemon.find({name: req.params.name})
-    .then(pokemon => res.json(pokemon))
-})
-
-// Read
-app.get('/pokemon/pokedexNumber/:number', (req,res) => {
-  Pokemon.find({pokedexNumber: req.params.number})
-    .then(pokemon => res.json(pokemon))
-})
-
-// Update
-app.put('/pokemon/pokedexNumber/:number', (req,res) => {
-  Pokemon.findOneAndUpdate(
-    { pokedexNumber: req.params.number },req.body, {new: true})
-    .then(pokemon => { res.json(pokemon)
-  })
-})
-
-// Delete
-app.delete('/pokemon/:number', (req, res) => {
-  Pokemon.deleteOne({id: req.params.number})
-    .then(pokemon => res.json(pokemon))
-})
