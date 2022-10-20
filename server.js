@@ -12,7 +12,7 @@ import pokedexRoute from './routes/pokedex.js'
 import pokemonRoute from './routes/pokemon.js'
 
 app.use(parser.json())
-app.use('/pokemon/evolvution', evolveRoute)
+app.use('/pokemon/evolution', evolveRoute)
 app.use('/pokemon/habitat', habitatRoute)
 app.use('/pokemon/legendary', legendaryRoute)
 app.use('/pokemon/mythical', mythicalRoute)
