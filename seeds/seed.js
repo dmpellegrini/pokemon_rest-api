@@ -21,7 +21,7 @@ const pokemonData = data.map(item => {
 
 Pokemon
   .deleteMany({})
-  .then(() => Pokemon.create(pokemonData))
+  .then(() => Pokemon.insertMany(pokemonData))
   .then(() => connection.close())
   .then(() => console.log("Done!"))
   .catch(error => console.log("Error", error))
