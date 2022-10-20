@@ -188,8 +188,58 @@ To delete pokemon of a particular habitat make a delete request to the following
 
 In this case, all the grassland habitat pokemon will be deleted. 
 
+## Updating
+
+### Updating By Name
+To update any of the attributes of the pokemon by name, make a put request to the folliwng endpoint
+<!-- Link -->
+[http://localhost:3000/pokemon/name/bulbasaur](http://localhost:3000/pokemon/name/bulbasaur)
+
+In this, case we are updating one or many of the attributes for bulbasaur by entering his name but any other name can be entered at the end of the url.
+
+In the body of the request you can update one or more of bulbasaur's attributes with the following format
+
+```
+{
+  "name":"Balboasaur"
+}
+```
+
+If you want to update multiple properties of bulbasaur's data. For example, if you want to make him legendary and mythical, do the following...
+
+```
+{
+  "is_mythical": true,
+  "is_legendary": true
+}
+```
+
+### Updating By Pokedex Number
+
+If you want to update a pokemon's attributes by their pokedex number make a put request to the following endpoint. 
+<!-- Link -->
+[http://localhost:3000/pokedex/1](http://localhost:3000/pokedex/1)
+
+In this case we are using pokedex number 1 (bulbasaur) but you can put in any number between 1 and 151.
 
 
+In the body of the request you can update one or more of bulbasaur's attributes with the following format
 
+```
+{
+  "name":"Balboasaur"
+}
+```
 
+You can update multiple properties of bulbasaur's data. For example, if you want to make him legendary and mythical, do the following...
 
+```
+{
+  "is_mythical": true,
+  "is_legendary": true
+}
+```
+
+# Thank You
+
+Thanks for using my skinny pokemon API for your pokemon query needs. I hope you enjoy it!
