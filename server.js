@@ -22,7 +22,7 @@ app.use('/pokemon/name', nameRoute)
 app.use('/pokedex', pokedexRoute)
 app.use('/pokemon', pokemonRoute)
 
-app.listen(port, () => console.log('app listening on port ${port}'))
+app.listen(port, () => console.log(`app listening on port ${port}`))
 
 // Shows A Welcome Message and Directions To User
 app.get("/", (req,res) => {
