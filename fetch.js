@@ -27,8 +27,8 @@ async function catchPokemon(pokedexLimit) {
   for(let i = 0; i < pokedexLimit; i++){
     await fetchPokemon(i+1)
   }
-  await fsPromises.writeFile("../db/pokemon.json", JSON.stringify(pokeBalls))
+  await fsPromises.writeFile("./db/pokemon.json", JSON.stringify(pokeBalls))
 }
 
-catchPokemon(3)
+catchPokemon(151)
 
