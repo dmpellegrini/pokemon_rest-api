@@ -11,6 +11,8 @@ import nameRoute from './routes/name.js'
 import pokedexRoute from './routes/pokedex.js'
 import pokemonRoute from './routes/pokemon.js'
 
+const port = process.env.PORT || 3000
+
 app.use(parser.json())
 // app.use('/evolvution', evolveRoute)
 app.use('/habitat', habitatRoute)
@@ -20,7 +22,7 @@ app.use('/pokemon/name', nameRoute)
 app.use('/pokedex', pokedexRoute)
 app.use('/pokemon', pokemonRoute)
 
-app.listen(3000, () => console.log('app listening on port 3000'))
+app.listen(port, () => console.log('app listening on port ${port}'))
 
 // Shows A Welcome Message and Directions To User
 app.get("/", (req,res) => {
