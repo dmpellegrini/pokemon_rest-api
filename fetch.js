@@ -30,5 +30,5 @@ async function catchPokemon(pokedexLimit) {
   await fsPromises.writeFile("../db/pokemon.json", JSON.stringify(pokeBalls))
 }
 
-catchPokemon(3)
+catchPokemon(151)
 
