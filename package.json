@@ -12,7 +12,7 @@
     "nodemon": "^2.0.20"
   },
   "scripts": {
-    "start": "node sever.js",
+    "start": "node server.js",
     "seed": "node seeds/seed.js"
   },
   "type": "module"
