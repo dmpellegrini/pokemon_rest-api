@@ -11,5 +11,10 @@
     "node-fetch": "^3.2.10",
     "nodemon": "^2.0.20"
   },
+  "scripts": {
+    "start": "node sever.js",
+    "seed": "node seeds/seed.js"
+  },
   "type": "module"
 }
+
