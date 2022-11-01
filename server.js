@@ -10,6 +10,7 @@ import mythicalRoute from './routes/mythical.js'
 import nameRoute from './routes/name.js'
 import pokedexRoute from './routes/pokedex.js'
 import pokemonRoute from './routes/pokemon.js'
+import cors from 'cors'
 
 const port = process.env.PORT || 3000
 
@@ -21,6 +22,7 @@ app.use('/pokemon/mythical', mythicalRoute)
 app.use('/pokemon/name', nameRoute)
 app.use('/pokedex', pokedexRoute)
 app.use('/pokemon', pokemonRoute)
+app.use(cors())
 
 app.listen(port, () => console.log(`app listening on port ${port}`))
 
