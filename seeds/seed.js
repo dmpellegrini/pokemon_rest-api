@@ -9,17 +9,14 @@ const pokemonData = data.map(item => {
   pokemon.name = item.name
   pokemon.pokedexNumber = item.id
   pokemon.habitat = item.habitat.name
-  // if (item.evolves_from === null) {
-  //   pokemon.evolves_from = "birth"
-  // }
-  // else{
-  //   pokemon.evolves_from = item.evolves_from
-  // }
+  pokemon.encounters = item.encounters
   pokemon.evolves_from = item.evolves_from
   pokemon.is_legendary = item.is_legendary
   pokemon.is_mythical = item.is_mythical
   pokemon.sprite = item.sprite
   pokemon.off_art = item.off_art
+  pokemon.types = item.types
+  pokemon.bio = item.bio
   return pokemon
 })
 

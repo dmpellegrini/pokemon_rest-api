@@ -15,25 +15,27 @@ const url2 = 'https://pokeapi.co/api/v2/pokemon/'
 let pokeBalls = []
 
 // Determines how many Pokemon should be sourced
-const pokedexLimit = 3 
+const pokedexLimit = 151 
 
 async function fetchPokemon(index) {
   const response = await axios(url+`${index}`)
   const response2 = await axios(url2+`${index}`)
+  const response3 = await axios(url2+`${index}/encounters`)
   const pokemon = response.data
   const pokemon2 = response2.data
-  // console.log(pokemon.name, pokemon.id, pokemon.habitat.name, pokemon.evolves_from_species, pokemon.is_legendary, pokemon.is_mythical)
-  // console.log(pokemon2.sprites.front_default, pokemon2.sprites.other['official-artwork'])
+  const pokemonEncounters = response3.data
   const pokeBall = {
     name: pokemon.name,
     id: pokemon.id,
     habitat: pokemon.habitat.name,
+    encounters: [],
     evolves_from: '',
     is_legendary: pokemon.is_legendary,
     is_mythical: pokemon.is_mythical,
     sprite: pokemon2.sprites.front_default,
     off_art: pokemon2.sprites.other['official-artwork'].front_default,
-    
+    types: [],
+    bio: pokemon.flavor_text_entries[3].flavor_text
   }
   
   if (pokemon.evolves_from_species === null) {
@@ -42,8 +44,16 @@ async function fetchPokemon(index) {
   else{
     pokeBall.evolves_from = pokemon.evolves_from_species.name
   }
+
+  pokemon2.types.forEach(type => {
+    pokeBall.types.push(type.type.name)
+  });
+
+  pokemonEncounters.forEach(location => {
+    pokeBall.encounters.push(location.location_area.name)
+
+  });
   
-  // pokeBalls[index-1] = response.data
   pokeBalls[index-1] = pokeBall 
   console.log(pokeBall)
 }
@@ -55,6 +65,5 @@ async function catchPokemon(pokedexLimit) {
   await fsPromises.writeFile("./db/pokemon151.json", JSON.stringify(pokeBalls))
 }
 
-// fetchPokemon(2)
-catchPokemon(151)
+catchPokemon(pokedexLimit)
 

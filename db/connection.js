@@ -8,7 +8,6 @@ let mongooseConfig = {
 }
 
 const url = process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/pokemon_db'
-const connectionString = 'mongodb://127.0.0.1:27017/pokemon_db'
 
 // Establishes connection to mongoose using proper configuration
 // 127.0.0.1 Is equivalent to "localhost
